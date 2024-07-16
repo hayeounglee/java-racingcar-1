@@ -1,12 +1,35 @@
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.List;
 
 public class RacingCarGame {
 
+    public static String[] findMax(Car[] array){
+        int maxDistance = -1;
+        List<String> winners = new ArrayList<>();
+
+        for(int i = 0; i < array.length; i++){
+            if(array[i].distance > maxDistance){
+                maxDistance = array[i].distance;
+            }
+        }
+
+        for(int i = 0; i < array.length; i++){
+            if(array[i].distance == maxDistance){
+                winners.add(array[i].name);
+            }
+        }
+        String[] rank = winners.toArray(new String[winners.size()]);
+        return rank;
+    }
+
     static void printDistance(Car car){
         System.out.print(car.name+':');
+        int distance = car.distance;
+
         while(true){
-            if(car.distance-- <= 0){
+            if(distance-- <= 0){
                 break;
             }
             System.out.print('-');
@@ -22,9 +45,6 @@ public class RacingCarGame {
         return false;
     }
 
-//    static int findmax(){
-//
-//    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -36,23 +56,32 @@ public class RacingCarGame {
         int tryCount = scanner.nextInt();
 
 
-        Car[] car = {
+        Car[] cars = {
             new Car(parts[0]),
             new Car(parts[1]),
             new Car(parts[2])
         };
 
         while(tryCount-->0){
-            if(randomMethod()){car[0].distance++;}
-            if(randomMethod()){car[1].distance++;}
-            if(randomMethod()){car[2].distance++;}
+            if(randomMethod()){cars[0].distance++;}
+            if(randomMethod()){cars[1].distance++;}
+            if(randomMethod()){cars[2].distance++;}
         }
 
         System.out.println("실행 결과");
-        printDistance(car[0]);
-        printDistance(car[1]);
-        printDistance(car[2]);
+        printDistance(cars[0]);
+        printDistance(cars[1]);
+        printDistance(cars[2]);
 
+        String[] rank = findMax(cars);
+        // System.out.println(cars[0].distance);
+
+        for (int i=0; i<rank.length; i++){
+            System.out.print(rank[i]);
+            if(i!=rank.length-1){
+                System.out.print(',');
+            }
+        }
 
         System.out.println("가 최종 우승했습니다.");
 

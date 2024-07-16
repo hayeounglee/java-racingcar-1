@@ -1,8 +1,9 @@
 public class Car {
     String name;
-    int distance = 0;
+    int distance;
 
     public Car(String name){
         this.name = name;
+        this.distance = 0;
     }
 }
