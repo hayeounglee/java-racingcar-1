@@ -19,10 +19,18 @@ public class RacingCarGame {
         Car carObj2 = new Car();
         Car carObj3 = new Car();
 
-        System.out.println(carObj1.distance);
-
         while(tryCount-->0){
 
+        }
+
+
+
+        System.out.print(car1+':');
+        while(true){
+            if(carObj1.distance-- <= 0){
+                break;
+            }
+            System.out.print('-');
         }
 
     }
