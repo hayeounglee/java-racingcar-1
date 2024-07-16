@@ -1,3 +1,3 @@
 public class Car {
-    int distance = 2;
+    int distance = 0;
 }

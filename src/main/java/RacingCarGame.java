@@ -1,6 +1,16 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class RacingCarGame {
+    static boolean randomMethod() {
+        Random random = new Random();
+        int randomInt = random.nextInt(10);
+        System.out.println(randomInt);
+        if (randomInt >= 4) {
+            return true;
+        }
+        return false;
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -20,10 +30,10 @@ public class RacingCarGame {
         Car carObj3 = new Car();
 
         while(tryCount-->0){
-
+            if(randomMethod()){carObj1.distance++;}
+            if(randomMethod()){carObj2.distance++;}
+            if(randomMethod()){carObj3.distance++;}
         }
-
-
 
         System.out.print(car1+':');
         while(true){
