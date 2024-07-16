@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class RacingCarGame {
 
     static void printDistance(Car car){
+        System.out.print(car.name+':');
         while(true){
             if(car.distance-- <= 0){
                 break;
@@ -15,7 +16,6 @@ public class RacingCarGame {
     static boolean randomMethod() {
         Random random = new Random();
         int randomInt = random.nextInt(10);
-        // System.out.println(randomInt);
         if (randomInt >= 4) {
             return true;
         }
@@ -36,8 +36,11 @@ public class RacingCarGame {
         String car3 = parts[2];
 
         Car carObj1 = new Car();
+        carObj1.setName(car1);
         Car carObj2 = new Car();
+        carObj2.setName(car2);
         Car carObj3 = new Car();
+        carObj3.setName(car3);
 
         while(tryCount-->0){
             if(randomMethod()){carObj1.distance++;}
@@ -46,12 +49,8 @@ public class RacingCarGame {
         }
 
         System.out.println("실행 결과");
-        System.out.print(car1+':');
         printDistance(carObj1);
-        System.out.print(car2+':');
         printDistance(carObj2);
-        System.out.print(car3+':');
         printDistance(carObj3);
-
     }
 }
