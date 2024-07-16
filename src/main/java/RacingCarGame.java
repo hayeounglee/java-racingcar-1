@@ -35,20 +35,23 @@ public class RacingCarGame {
         System.out.println("시도할 회수는 몇회인가요?");
         int tryCount = scanner.nextInt();
 
-        Car carObj1 = new Car(parts[0]);
-        Car carObj2 = new Car(parts[1]);
-        Car carObj3 = new Car(parts[2]);
+
+        Car[] car = {
+            new Car(parts[0]),
+            new Car(parts[1]),
+            new Car(parts[2])
+        };
 
         while(tryCount-->0){
-            if(randomMethod()){carObj1.distance++;}
-            if(randomMethod()){carObj2.distance++;}
-            if(randomMethod()){carObj3.distance++;}
+            if(randomMethod()){car[0].distance++;}
+            if(randomMethod()){car[1].distance++;}
+            if(randomMethod()){car[2].distance++;}
         }
 
         System.out.println("실행 결과");
-        printDistance(carObj1);
-        printDistance(carObj2);
-        printDistance(carObj3);
+        printDistance(car[0]);
+        printDistance(car[1]);
+        printDistance(car[2]);
 
 
         System.out.println("가 최종 우승했습니다.");
