@@ -2,10 +2,20 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RacingCarGame {
+
+    static void printDistance(Car car){
+        while(true){
+            if(car.distance-- <= 0){
+                break;
+            }
+            System.out.print('-');
+        }
+        System.out.println();
+    }
     static boolean randomMethod() {
         Random random = new Random();
         int randomInt = random.nextInt(10);
-        System.out.println(randomInt);
+        // System.out.println(randomInt);
         if (randomInt >= 4) {
             return true;
         }
@@ -35,13 +45,13 @@ public class RacingCarGame {
             if(randomMethod()){carObj3.distance++;}
         }
 
+        System.out.println("실행 결과");
         System.out.print(car1+':');
-        while(true){
-            if(carObj1.distance-- <= 0){
-                break;
-            }
-            System.out.print('-');
-        }
+        printDistance(carObj1);
+        System.out.print(car2+':');
+        printDistance(carObj2);
+        System.out.print(car3+':');
+        printDistance(carObj3);
 
     }
 }
