@@ -15,8 +15,11 @@ public class RacingCarGame {
         String car2 = parts[1];
         String car3 = parts[2];
 
-        System.out.println(car1);
-        System.out.println(car2);
+        Car carObj1 = new Car();
+        Car carObj2 = new Car();
+        Car carObj3 = new Car();
+
+        System.out.println(carObj1.distance);
 
         while(tryCount-->0){
 
