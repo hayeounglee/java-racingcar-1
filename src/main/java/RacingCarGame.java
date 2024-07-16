@@ -74,7 +74,6 @@ public class RacingCarGame {
         printDistance(cars[2]);
 
         String[] rank = findMax(cars);
-        // System.out.println(cars[0].distance);
 
         for (int i=0; i<rank.length; i++){
             System.out.print(rank[i]);
