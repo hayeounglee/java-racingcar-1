@@ -21,6 +21,10 @@ public class RacingCarGame {
         }
         return false;
     }
+
+//    static int findmax(){
+//
+//    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -31,16 +35,9 @@ public class RacingCarGame {
         System.out.println("시도할 회수는 몇회인가요?");
         int tryCount = scanner.nextInt();
 
-        String car1 = parts[0];
-        String car2 = parts[1];
-        String car3 = parts[2];
-
-        Car carObj1 = new Car();
-        carObj1.setName(car1);
-        Car carObj2 = new Car();
-        carObj2.setName(car2);
-        Car carObj3 = new Car();
-        carObj3.setName(car3);
+        Car carObj1 = new Car(parts[0]);
+        Car carObj2 = new Car(parts[1]);
+        Car carObj3 = new Car(parts[2]);
 
         while(tryCount-->0){
             if(randomMethod()){carObj1.distance++;}
@@ -52,5 +49,9 @@ public class RacingCarGame {
         printDistance(carObj1);
         printDistance(carObj2);
         printDistance(carObj3);
+
+
+        System.out.println("가 최종 우승했습니다.");
+
     }
 }

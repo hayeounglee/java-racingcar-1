@@ -2,7 +2,7 @@ public class Car {
     String name;
     int distance = 0;
 
-    public void setName(String name){
+    public Car(String name){
         this.name = name;
     }
 }
