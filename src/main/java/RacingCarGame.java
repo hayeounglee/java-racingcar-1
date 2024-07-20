@@ -46,32 +46,33 @@ public class RacingCarGame {
     }
 
     public static void main(String[] args) {
+        int num = 0;
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = scanner.nextLine();
         String[] parts = input.split(",");
+        num = parts.length;
 
         System.out.println("시도할 회수는 몇회인가요?");
         int tryCount = scanner.nextInt();
 
-
-        Car[] cars = {
-            new Car(parts[0]),
-            new Car(parts[1]),
-            new Car(parts[2])
-        };
+        Car[] cars = new Car[num];
+        for(int i = 0; i <num; i++){
+            cars[i] = new Car(parts[i]);
+        }
 
         while(tryCount-->0){
-            if(randomMethod()){cars[0].distance++;}
-            if(randomMethod()){cars[1].distance++;}
-            if(randomMethod()){cars[2].distance++;}
+            for(int i = 0; i <num; i++) {
+                if(randomMethod()){cars[i].distance++;}
+            }
         }
 
         System.out.println("실행 결과");
-        printDistance(cars[0]);
-        printDistance(cars[1]);
-        printDistance(cars[2]);
+        for(int i = 0; i <num; i++) {
+            printDistance(cars[i]);
+        }
 
         String[] rank = findMax(cars);
 
