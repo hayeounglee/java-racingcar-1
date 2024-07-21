@@ -17,23 +17,23 @@ public class RacingCarGame {
         List<String> winners = new ArrayList<>();
 
         for(int i = 0; i < array.length; i++){
-            if(array[i].distance > maxDistance){
-                maxDistance = array[i].distance;
+            if(array[i].getDistance()> maxDistance){
+                maxDistance = array[i].getDistance();
             }
         }
 
         for(int i = 0; i < array.length; i++){
-            if(array[i].distance == maxDistance){
-                winners.add(array[i].name);
+            if(array[i].getDistance() == maxDistance){
+                winners.add(array[i].getName());
             }
         }
         String[] rank = winners.toArray(new String[winners.size()]);
         return rank;
     }
 
-    static void printDistance(Car car){
-        System.out.print(car.name+':');
-        int distance = car.distance;
+    public static void printDistance(Car car){
+        System.out.print(car.getName()+':');
+        int distance = car.getDistance();
 
         while(isDistanceLeft(distance)){
             System.out.print('-');
@@ -42,7 +42,7 @@ public class RacingCarGame {
         System.out.println();
     }
 
-    static boolean isRandomNumberHigh() {
+    public static boolean isRandomNumberHigh() {
 
         Random random = new Random();
         int randomInt = random.nextInt(RANDOM_BOUND);
@@ -72,7 +72,7 @@ public class RacingCarGame {
 
         while(tryCount-->0){
             for(int i = 0; i <num; i++) {
-                if((isRandomNumberHigh())){storeCars[i].distance++;}
+                if((isRandomNumberHigh())){storeCars[i].setDistance();}
             }
         }
 
