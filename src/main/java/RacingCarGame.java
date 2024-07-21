@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.List;
 
 public class RacingCarGame {
+    private static final int RANDOM_BOUND = 10;
+    private static final int THRESHOLD = 4;
 
     public static boolean isDistanceLeft(int distance){
         if(distance < 0) return false;
@@ -39,10 +41,12 @@ public class RacingCarGame {
         }
         System.out.println();
     }
-    static boolean randomMethod() {
+
+    static boolean isRandomNumberHigh() {
+
         Random random = new Random();
-        int randomInt = random.nextInt(10);
-        if (randomInt >= 4) {
+        int randomInt = random.nextInt(RANDOM_BOUND);
+        if (randomInt >= THRESHOLD) {
             return true;
         }
         return false;
@@ -55,20 +59,20 @@ public class RacingCarGame {
 
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = scanner.nextLine();
-        String[] parts = input.split(",");
-        num = parts.length;
+        String[] carNames = input.split(",");
+        num = carNames.length;
 
         System.out.println("시도할 회수는 몇회인가요?");
         int tryCount = scanner.nextInt();
 
         Car[] storeCars = new Car[num];
         for(int i = 0; i <num; i++){
-            storeCars[i] = new Car(parts[i]);
+            storeCars[i] = new Car(carNames[i]);
         }
 
         while(tryCount-->0){
             for(int i = 0; i <num; i++) {
-                if(randomMethod()){storeCars[i].distance++;}
+                if((isRandomNumberHigh())){storeCars[i].distance++;}
             }
         }
 
