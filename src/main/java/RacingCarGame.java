@@ -5,6 +5,11 @@ import java.util.List;
 
 public class RacingCarGame {
 
+    public static boolean isDistanceLeft(int distance){
+        if(distance < 0) return false;
+        return true;
+    }
+
     public static String[] findMax(Car[] array){
         int maxDistance = -1;
         List<String> winners = new ArrayList<>();
@@ -28,11 +33,9 @@ public class RacingCarGame {
         System.out.print(car.name+':');
         int distance = car.distance;
 
-        while(true){
-            if(distance-- <= 0){
-                break;
-            }
+        while(isDistanceLeft(distance)){
             System.out.print('-');
+            distance--;
         }
         System.out.println();
     }
@@ -58,23 +61,23 @@ public class RacingCarGame {
         System.out.println("시도할 회수는 몇회인가요?");
         int tryCount = scanner.nextInt();
 
-        Car[] cars = new Car[num];
+        Car[] storeCars = new Car[num];
         for(int i = 0; i <num; i++){
-            cars[i] = new Car(parts[i]);
+            storeCars[i] = new Car(parts[i]);
         }
 
         while(tryCount-->0){
             for(int i = 0; i <num; i++) {
-                if(randomMethod()){cars[i].distance++;}
+                if(randomMethod()){storeCars[i].distance++;}
             }
         }
 
         System.out.println("실행 결과");
         for(int i = 0; i <num; i++) {
-            printDistance(cars[i]);
+            printDistance(storeCars[i]);
         }
 
-        String[] rank = findMax(cars);
+        String[] rank = findMax(storeCars);
 
         for (int i=0; i<rank.length; i++){
             System.out.print(rank[i]);
