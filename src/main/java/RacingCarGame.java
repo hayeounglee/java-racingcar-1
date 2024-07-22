@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.List;
@@ -12,19 +13,19 @@ public class RacingCarGame {
         return true;
     }
 
-    public static String[] findMax(Car[] array){
+    public static String[] findMax(List<Car> array){
         int maxDistance = -1;
         List<String> winners = new ArrayList<>();
 
-        for(int i = 0; i < array.length; i++){
-            if(array[i].getDistance()> maxDistance){
-                maxDistance = array[i].getDistance();
+        for(Car car : array){
+            if(car.getDistance()> maxDistance){
+                maxDistance = car.getDistance();
             }
         }
 
-        for(int i = 0; i < array.length; i++){
-            if(array[i].getDistance() == maxDistance){
-                winners.add(array[i].getName());
+        for(Car car : array){
+            if(car.getDistance() == maxDistance){
+                winners.add(car.getName());
             }
         }
         String[] rank = winners.toArray(new String[winners.size()]);
@@ -53,32 +54,31 @@ public class RacingCarGame {
     }
 
     public static void main(String[] args) {
-        int num = 0;
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = scanner.nextLine();
-        String[] carNames = input.split(",");
-        num = carNames.length;
+        List<String> carNames = new ArrayList<>(Arrays.asList(input.split(",")));
 
         System.out.println("시도할 회수는 몇회인가요?");
         int tryCount = scanner.nextInt();
 
-        Car[] storeCars = new Car[num];
-        for(int i = 0; i <num; i++){
-            storeCars[i] = new Car(carNames[i]);
+        int num = carNames.size();
+        List<Car> storeCars = new ArrayList<>();
+        for(int i = 0; i < num; i++){
+            storeCars.add(new Car(carNames.get(i)));
         }
 
         while(tryCount-->0){
             for(int i = 0; i <num; i++) {
-                if((isRandomNumberHigh())){storeCars[i].setDistance();}
+                if((isRandomNumberHigh())){storeCars.get(i).setDistance();}
             }
         }
 
         System.out.println("실행 결과");
         for(int i = 0; i <num; i++) {
-            printDistance(storeCars[i]);
+            printDistance(storeCars.get(i));
         }
 
         String[] rank = findMax(storeCars);
