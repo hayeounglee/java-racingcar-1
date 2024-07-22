@@ -44,7 +44,6 @@ public class RacingCarGame {
     }
 
     public static boolean isRandomNumberHigh() {
-
         Random random = new Random();
         int randomInt = random.nextInt(RANDOM_BOUND);
         if (randomInt >= THRESHOLD) {
