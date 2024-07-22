@@ -63,23 +63,23 @@ public class RacingCarGame {
         int tryCount = scanner.nextInt();
 
         int num = carNames.size();
-        List<Car> storeCars = new ArrayList<>();
+        List<Car> carList = new ArrayList<>();
         for(int i = 0; i < num; i++){
-            storeCars.add(new Car(carNames.get(i)));
+            carList.add(new Car(carNames.get(i)));
         }
 
         while(tryCount-->0){
             for(int i = 0; i <num; i++) {
-                if((isRandomNumberHigh())){storeCars.get(i).incrementDistance();}
+                if((isRandomNumberHigh())){carList.get(i).incrementDistance();}
             }
         }
 
         System.out.println("실행 결과");
         for(int i = 0; i <num; i++) {
-            printDistance(storeCars.get(i));
+            printDistance(carList.get(i));
         }
 
-        List<String> rank = findMax(storeCars);
+        List<String> rank = findMax(carList);
 
         for (int i=0; i<rank.size(); i++){
             System.out.print(rank.get(i));
