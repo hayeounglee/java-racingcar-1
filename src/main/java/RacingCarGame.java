@@ -72,7 +72,7 @@ public class RacingCarGame {
 
         while(tryCount-->0){
             for(int i = 0; i <num; i++) {
-                if((isRandomNumberHigh())){storeCars.get(i).setDistance();}
+                if((isRandomNumberHigh())){storeCars.get(i).incrementDistance();}
             }
         }
 

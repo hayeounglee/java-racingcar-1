@@ -15,7 +15,7 @@ public class Car {
         return distance;
     }
 
-    public void setDistance(){
+    public void incrementDistance(){
         this.distance = this.distance + 1;
     }
 }
