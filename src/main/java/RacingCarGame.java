@@ -13,7 +13,7 @@ public class RacingCarGame {
         return true;
     }
 
-    public static String[] findMax(List<Car> array){
+    public static List<String> findMax(List<Car> array){
         int maxDistance = -1;
         List<String> winners = new ArrayList<>();
 
@@ -28,8 +28,7 @@ public class RacingCarGame {
                 winners.add(car.getName());
             }
         }
-        String[] rank = winners.toArray(new String[winners.size()]);
-        return rank;
+        return winners;
     }
 
     public static void printDistance(Car car){
@@ -80,11 +79,11 @@ public class RacingCarGame {
             printDistance(storeCars.get(i));
         }
 
-        String[] rank = findMax(storeCars);
+        List<String> rank = findMax(storeCars);
 
-        for (int i=0; i<rank.length; i++){
-            System.out.print(rank[i]);
-            if(i!=rank.length-1){
+        for (int i=0; i<rank.size(); i++){
+            System.out.print(rank.get(i));
+            if(i!=rank.size()-1){
                 System.out.print(',');
             }
         }
