@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RacingCarGame {
     private static final int RANDOM_BOUND = 10;
-    private static final int THRESHOLD = 4;
+    private static final int MOVE_THRESHOLD = 4;
 
     public static boolean isDistanceLeft(int distance){
         if(distance < 0) return false;
@@ -45,7 +45,7 @@ public class RacingCarGame {
     public static boolean isRandomNumberHigh() {
         Random random = new Random();
         int randomInt = random.nextInt(RANDOM_BOUND);
-        if (randomInt >= THRESHOLD) {
+        if (randomInt >= MOVE_THRESHOLD) {
             return true;
         }
         return false;
