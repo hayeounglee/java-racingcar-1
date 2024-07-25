@@ -12,7 +12,7 @@ public class RacingCarGame {
         int listLength = carList.size();
         while(tryCount-->0){
             for(int i = 0; i <listLength; i++) {
-                if((isRandomNumberHigh())){carList.get(i).incrementDistance();}
+                if((shouldMoveForward())){carList.get(i).incrementDistance();}
             }
         }
         printResult(carList);
@@ -60,20 +60,17 @@ public class RacingCarGame {
         System.out.print(car.getName()+':');
         int distance = car.getDistance();
 
-        while(distance >= 0){
+        while(distance > 0){
             System.out.print('-');
             distance--;
         }
         System.out.println();
     }
 
-    public static boolean isRandomNumberHigh() {
+    public static boolean shouldMoveForward() {
         Random random = new Random();
         int randomInt = random.nextInt(RANDOM_BOUND);
-        if (randomInt >= MOVE_THRESHOLD) {
-            return true;
-        }
-        return false;
+        return randomInt >= MOVE_THRESHOLD;
     }
 
     public static void main(String[] args) {
