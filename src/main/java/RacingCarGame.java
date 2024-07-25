@@ -7,6 +7,8 @@ import java.util.List;
 public class RacingCarGame {
     private static final int RANDOM_BOUND = 10;
     private static final int MOVE_THRESHOLD = 4;
+    private static final Random random = new Random();
+
 
     private static void playGame(List<Car> carList, int tryCount){
         int listLength = carList.size();
@@ -68,7 +70,6 @@ public class RacingCarGame {
     }
 
     public static boolean shouldMoveForward() {
-        Random random = new Random();
         int randomInt = random.nextInt(RANDOM_BOUND);
         return randomInt >= MOVE_THRESHOLD;
     }
