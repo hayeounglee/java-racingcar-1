@@ -8,9 +8,29 @@ public class RacingCarGame {
     private static final int RANDOM_BOUND = 10;
     private static final int MOVE_THRESHOLD = 4;
 
-    public static boolean isDistanceLeft(int distance){
-        if(distance < 0) return false;
-        return true;
+    private static void playGame(List<Car> carList, int tryCount){
+        int listLength = carList.size();
+        while(tryCount-->0){
+            for(int i = 0; i <listLength; i++) {
+                if((isRandomNumberHigh())){carList.get(i).incrementDistance();}
+            }
+        }
+
+        System.out.println("실행 결과");
+        for(int i = 0; i <listLength; i++) {
+            printDistance(carList.get(i));
+        }
+
+        List<String> rank = findMax(carList);
+
+        for (int i=0; i<rank.size(); i++){
+            System.out.print(rank.get(i));
+            if(i!=rank.size()-1){
+                System.out.print(',');
+            }
+        }
+
+        System.out.println("가 최종 우승했습니다.");
     }
 
     public static List<String> findMax(List<Car> array){
@@ -35,7 +55,7 @@ public class RacingCarGame {
         System.out.print(car.getName()+':');
         int distance = car.getDistance();
 
-        while(isDistanceLeft(distance)){
+        while(distance >= 0){
             System.out.print('-');
             distance--;
         }
@@ -68,27 +88,7 @@ public class RacingCarGame {
             carList.add(new Car(carNames.get(i)));
         }
 
-        while(tryCount-->0){
-            for(int i = 0; i <num; i++) {
-                if((isRandomNumberHigh())){carList.get(i).incrementDistance();}
-            }
-        }
-
-        System.out.println("실행 결과");
-        for(int i = 0; i <num; i++) {
-            printDistance(carList.get(i));
-        }
-
-        List<String> rank = findMax(carList);
-
-        for (int i=0; i<rank.size(); i++){
-            System.out.print(rank.get(i));
-            if(i!=rank.size()-1){
-                System.out.print(',');
-            }
-        }
-
-        System.out.println("가 최종 우승했습니다.");
+        playGame(carList, tryCount);
 
     }
 }
