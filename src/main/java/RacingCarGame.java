@@ -15,6 +15,11 @@ public class RacingCarGame {
                 if((isRandomNumberHigh())){carList.get(i).incrementDistance();}
             }
         }
+        printResult(carList);
+    }
+
+    private static void printResult(List<Car> carList){
+        int listLength = carList.size();
 
         System.out.println("실행 결과");
         for(int i = 0; i <listLength; i++) {
