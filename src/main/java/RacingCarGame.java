@@ -13,7 +13,7 @@ public class RacingCarGame {
         int listLength = racingCars.size();
         while (tryCount-- > 0) {
             for (int i = 0; i < listLength; i++) {
-                if ((shouldMoveForward())) {
+                if ((isMovable())) {
                     racingCars.get(i).incrementDistance();
                 }
             }
@@ -62,7 +62,7 @@ public class RacingCarGame {
         System.out.println();
     }
 
-    public static boolean shouldMoveForward() {
+    public static boolean isMovable() {
         int randomInt = random.nextInt(RANDOM_BOUND);
         return randomInt >= MOVE_THRESHOLD;
     }
