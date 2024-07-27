@@ -29,7 +29,7 @@ public class RacingCarGame {
             printDistance(carList.get(i));
         }
 
-        List<String> rank = findMax(carList);
+        List<String> rank = getWinners(carList);
 
         for (int i = 0; i < rank.size(); i++) {
             System.out.print(rank.get(i));
@@ -41,7 +41,7 @@ public class RacingCarGame {
         System.out.println("가 최종 우승했습니다.");
     }
 
-    public static List<String> findMax(List<Car> array) {
+    public static List<String> getWinners(List<Car> array) {
         int maxDistance = -1;
         List<String> winners = new ArrayList<>();
 
