@@ -9,29 +9,31 @@ public class RacingCarGame {
     private static final int MOVE_THRESHOLD = 4;
     private static final Random random = new Random();
 
-    private static void playGame(List<Car> carList, int tryCount){
-        int listLength = carList.size();
-        while(tryCount-->0){
-            for(int i = 0; i <listLength; i++) {
-                if((shouldMoveForward())){carList.get(i).incrementDistance();}
+    private static void playGame(List<Car> racingCars, int tryCount) {
+        int listLength = racingCars.size();
+        while (tryCount-- > 0) {
+            for (int i = 0; i < listLength; i++) {
+                if ((shouldMoveForward())) {
+                    racingCars.get(i).incrementDistance();
+                }
             }
         }
-        printResult(carList);
+        printResult(racingCars);
     }
 
-    private static void printResult(List<Car> carList){
+    private static void printResult(List<Car> carList) {
         int listLength = carList.size();
 
         System.out.println("실행 결과");
-        for(int i = 0; i <listLength; i++) {
+        for (int i = 0; i < listLength; i++) {
             printDistance(carList.get(i));
         }
 
         List<String> rank = findMax(carList);
 
-        for (int i=0; i<rank.size(); i++){
+        for (int i = 0; i < rank.size(); i++) {
             System.out.print(rank.get(i));
-            if(i!=rank.size()-1){
+            if (i != rank.size() - 1) {
                 System.out.print(',');
             }
         }
@@ -39,29 +41,29 @@ public class RacingCarGame {
         System.out.println("가 최종 우승했습니다.");
     }
 
-    public static List<String> findMax(List<Car> array){
+    public static List<String> findMax(List<Car> array) {
         int maxDistance = -1;
         List<String> winners = new ArrayList<>();
 
-        for(Car car : array){
-            if(car.getDistance()> maxDistance){
+        for (Car car : array) {
+            if (car.getDistance() > maxDistance) {
                 maxDistance = car.getDistance();
             }
         }
 
-        for(Car car : array){
-            if(car.getDistance() == maxDistance){
+        for (Car car : array) {
+            if (car.getDistance() == maxDistance) {
                 winners.add(car.getName());
             }
         }
         return winners;
     }
 
-    public static void printDistance(Car car){
-        System.out.print(car.getName()+':');
+    public static void printDistance(Car car) {
+        System.out.print(car.getName() + ':');
         int distance = car.getDistance();
 
-        while(distance > 0){
+        while (distance > 0) {
             System.out.print('-');
             distance--;
         }
@@ -85,12 +87,12 @@ public class RacingCarGame {
         int tryCount = scanner.nextInt();
 
         int num = carNames.size();
-        List<Car> carList = new ArrayList<>();
-        for(int i = 0; i < num; i++){
-            carList.add(new Car(carNames.get(i)));
+        List<Car> racingCars = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            racingCars.add(new Car(carNames.get(i)));
         }
 
-        playGame(carList, tryCount);
+        playGame(racingCars, tryCount);
 
     }
 }
