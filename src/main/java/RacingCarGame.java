@@ -11,9 +11,8 @@ public class RacingCarGame {
 
     private static void playOneRound(List<Car> racingCars){
         for (int i = 0; i < racingCars.size(); i++) {
-            if ((isMovable())) {
-                racingCars.get(i).incrementDistance();
-            }
+            if ((isMovable())) racingCars.get(i).incrementDistance();
+
         }
     }
 
@@ -39,12 +38,9 @@ public class RacingCarGame {
     private static List<String> getWinners(List<Car> racingCars) {
         List<String> winners = new ArrayList<>();
 
-       int maxDistance = findMaxDistance(racingCars);
-
+        int maxDistance = findMaxDistance(racingCars);
         for (Car car : racingCars) {
-            if (car.getDistance() == maxDistance) {
-                winners.add(car.getName());
-            }
+            addWinner(winners, car, maxDistance);
         }
         return winners;
     }
@@ -55,6 +51,13 @@ public class RacingCarGame {
             maxDistance = Math.max(maxDistance, car.getDistance());
         }
         return maxDistance;
+    }
+
+    private static List<String> addWinner(List<String> winners, Car car, int maxDistance){
+        if (car.getDistance() == maxDistance) {
+            winners.add(car.getName());
+        }
+        return winners;
     }
 
     private static void printDistance(Car car) {
