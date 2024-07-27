@@ -21,37 +21,29 @@ public class RacingCarGame {
         printResult(racingCars);
     }
 
-    private static void printResult(List<Car> carList) {
-        int listLength = carList.size();
+    private static void printResult(List<Car> racingCars) {
+        int listLength = racingCars.size();
 
         System.out.println("실행 결과");
         for (int i = 0; i < listLength; i++) {
-            printDistance(carList.get(i));
+            printDistance(racingCars.get(i));
         }
 
-        List<String> rank = getWinners(carList);
-
-        for (int i = 0; i < rank.size(); i++) {
-            System.out.print(rank.get(i));
-            if (i != rank.size() - 1) {
-                System.out.print(',');
-            }
-        }
-
-        System.out.println("가 최종 우승했습니다.");
+        List<String> winners = getWinners(racingCars);
+        System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
     }
 
-    public static List<String> getWinners(List<Car> array) {
+    public static List<String> getWinners(List<Car> racingCars) {
         int maxDistance = -1;
         List<String> winners = new ArrayList<>();
 
-        for (Car car : array) {
+        for (Car car : racingCars) {
             if (car.getDistance() > maxDistance) {
                 maxDistance = car.getDistance();
             }
         }
 
-        for (Car car : array) {
+        for (Car car : racingCars) {
             if (car.getDistance() == maxDistance) {
                 winners.add(car.getName());
             }
