@@ -9,14 +9,17 @@ public class RacingCarGame {
     private static final int MOVE_THRESHOLD = 4;
     private static final Random random = new Random();
 
-    private static void playGame(List<Car> racingCars, int tryCount) {
-        int listLength = racingCars.size();
-        while (tryCount-- > 0) {
-            for (int i = 0; i < listLength; i++) {
-                if ((isMovable())) {
-                    racingCars.get(i).incrementDistance();
-                }
+    private static void playOneRound(List<Car> racingCars){
+        for (int i = 0; i < racingCars.size(); i++) {
+            if ((isMovable())) {
+                racingCars.get(i).incrementDistance();
             }
+        }
+    }
+
+    private static void playGame(List<Car> racingCars, int tryCount) {
+        while (tryCount-- > 0) {
+            playOneRound(racingCars);
         }
         printResult(racingCars);
     }
@@ -33,15 +36,10 @@ public class RacingCarGame {
         System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
     }
 
-    public static List<String> getWinners(List<Car> racingCars) {
-        int maxDistance = -1;
+    private static List<String> getWinners(List<Car> racingCars) {
         List<String> winners = new ArrayList<>();
 
-        for (Car car : racingCars) {
-            if (car.getDistance() > maxDistance) {
-                maxDistance = car.getDistance();
-            }
-        }
+       int maxDistance = findMaxDistance(racingCars);
 
         for (Car car : racingCars) {
             if (car.getDistance() == maxDistance) {
@@ -51,7 +49,15 @@ public class RacingCarGame {
         return winners;
     }
 
-    public static void printDistance(Car car) {
+    private static int findMaxDistance(List<Car> racingCars){
+        int maxDistance = -1;
+        for (Car car : racingCars) {
+            maxDistance = Math.max(maxDistance, car.getDistance());
+        }
+        return maxDistance;
+    }
+
+    private static void printDistance(Car car) {
         System.out.print(car.getName() + ':');
         int distance = car.getDistance();
 
@@ -62,13 +68,20 @@ public class RacingCarGame {
         System.out.println();
     }
 
-    public static boolean isMovable() {
+    private static boolean isMovable() {
         int randomInt = random.nextInt(RANDOM_BOUND);
         return randomInt >= MOVE_THRESHOLD;
     }
 
-    public static void main(String[] args) {
+    private static List<Car> createRacingCars(List<String> carNames){
+        List<Car> racingCars = new ArrayList<>();
+        for (int i = 0; i < carNames.size(); i++) {
+            racingCars.add(new Car(carNames.get(i)));
+        }
+        return racingCars;
+    }
 
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
@@ -78,13 +91,8 @@ public class RacingCarGame {
         System.out.println("시도할 회수는 몇회인가요?");
         int tryCount = scanner.nextInt();
 
-        int num = carNames.size();
-        List<Car> racingCars = new ArrayList<>();
-        for (int i = 0; i < num; i++) {
-            racingCars.add(new Car(carNames.get(i)));
-        }
+        List<Car> racingCars = createRacingCars(carNames);
 
         playGame(racingCars, tryCount);
-
     }
 }
