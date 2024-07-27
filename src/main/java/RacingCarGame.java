@@ -9,7 +9,6 @@ public class RacingCarGame {
     private static final int MOVE_THRESHOLD = 4;
     private static final Random random = new Random();
 
-
     private static void playGame(List<Car> carList, int tryCount){
         int listLength = carList.size();
         while(tryCount-->0){
