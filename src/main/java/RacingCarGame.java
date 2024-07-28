@@ -83,14 +83,11 @@ public class RacingCarGame {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        InputView inputView = new InputView();
+        ResultView resultView = new ResultView();
 
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String input = scanner.nextLine();
-        List<String> carNames = new ArrayList<>(Arrays.asList(input.split(",")));
-
-        System.out.println("시도할 회수는 몇회인가요?");
-        int tryCount = scanner.nextInt();
+        final var carNames = InputView.getCarNames();
+        final var tryCount = InputView.getTryCount();
 
         List<Car> racingCars = createRacingCars(carNames);
 
