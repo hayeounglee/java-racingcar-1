@@ -1,5 +1,8 @@
+package view;
+
 import java.util.ArrayList;
 import java.util.List;
+import domain.Car;
 
 public class ResultView {
     public static void printResult(List<Car> racingCars) {

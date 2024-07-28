@@ -1,6 +1,6 @@
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.List;
+import view.InputView;
+import view.ResultView;
+import domain.RacingGame;
 
 public class RacingMain {
     public static void main(String[] args) {
