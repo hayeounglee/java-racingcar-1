@@ -24,10 +24,8 @@ public class RacingCarGame {
     }
 
     private static void printResult(List<Car> racingCars) {
-        int listLength = racingCars.size();
-
         System.out.println("실행 결과");
-        for (int i = 0; i < listLength; i++) {
+        for (int i = 0; i < racingCars.size(); i++) {
             printDistance(racingCars.get(i));
         }
 
