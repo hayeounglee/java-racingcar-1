@@ -14,7 +14,7 @@ public class RacingGame {
         this.tryCount = tryCount;
     }
 
-    private static List<Car> createRacingCars(List<String> carNames){
+    private List<Car> createRacingCars(List<String> carNames){
         List<Car> racingCars = new ArrayList<>();
         for (int i = 0; i < carNames.size(); i++) {
             racingCars.add(new Car(carNames.get(i)));
@@ -28,7 +28,7 @@ public class RacingGame {
         }
     }
 
-    private static void playOneRound(List<Car> racingCars){
+    private void playOneRound(List<Car> racingCars){
         for (int i = 0; i < racingCars.size(); i++) {
             if ((isMovable())) racingCars.get(i).incrementDistance();
 
