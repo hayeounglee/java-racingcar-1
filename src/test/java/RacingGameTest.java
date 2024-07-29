@@ -20,5 +20,4 @@ public class RacingGameTest {
         assertEquals("Car2", racingCars.get(1).getName());
         assertEquals("Car3", racingCars.get(2).getName());
     }
-
 }
