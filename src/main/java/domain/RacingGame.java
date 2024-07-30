@@ -33,7 +33,6 @@ public class RacingGame {
     private void playOneRound(List<Car> racingCars){
         for (int i = 0; i < racingCars.size(); i++) {
             if ((isMovable())) racingCars.get(i).incrementDistance();
-
         }
     }
 
