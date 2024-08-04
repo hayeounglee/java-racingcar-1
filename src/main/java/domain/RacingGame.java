@@ -32,12 +32,12 @@ public class RacingGame {
 
     private void playOneRound(List<Car> racingCars){
         for (int i = 0; i < racingCars.size(); i++) {
-            if ((isMovable())) racingCars.get(i).incrementDistance();
+            int randomInt = random.nextInt(RANDOM_BOUND);
+            if ((isMovable(randomInt))) racingCars.get(i).incrementDistance();
         }
     }
 
-    private static boolean isMovable() {
-        int randomInt = random.nextInt(RANDOM_BOUND);
+    public static boolean isMovable(int randomInt) {
         return randomInt >= MOVE_THRESHOLD;
     }
 
