@@ -41,6 +41,6 @@ public class RacingGameTest {
     @Test
     @DisplayName("우승자를 제대로 출력한다")
     void testWinners(){
-
+        
     }
 }
