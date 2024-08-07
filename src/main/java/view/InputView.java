@@ -21,15 +21,20 @@ public class InputView {
 
     private static boolean isValidName(List<String> carNames){
         for(String name : carNames){
-            if(name.length() > MAX_CAR_NAME_LENGTH) return false;
+            if(name.length() > MAX_CAR_NAME_LENGTH || name.length() == 0) {
+                System.out.println("이름은 " + MAX_CAR_NAME_LENGTH + "자를 초과하거나 공백일 수 없습니다.");
+                return false;
+            }
         }
         return true;
     }
 
     public static int getTryCount(){
-        System.out.println("시도할 회수는 몇회인가요?");
-        int tryCount = scanner.nextInt();
-
-        return tryCount;
+        while(true) {
+            System.out.println("시도할 회수는 몇회인가요?");
+            int tryCount = scanner.nextInt();
+            if(tryCount > 0) return tryCount;
+            System.out.println("0이하는 입력할 수 없습니다.");
+        }
     }
 }
