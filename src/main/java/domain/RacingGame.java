@@ -44,4 +44,28 @@ public class RacingGame {
    public List<Car> getRacingCars(){
         return racingCars;
    }
+
+    public static List<String> getWinners(List<Car> racingCars) {
+        List<String> winners = new ArrayList<>();
+
+        int maxDistance = findMaxDistance(racingCars);
+        for (Car car : racingCars) {
+            addWinner(winners, car, maxDistance);
+        }
+        return winners;
+    }
+
+    private static int findMaxDistance(List<Car> racingCars){
+        int maxDistance = -1;
+        for (Car car : racingCars) {
+            maxDistance = Math.max(maxDistance, car.getDistance());
+        }
+        return maxDistance;
+    }
+
+    private static void addWinner(List<String> winners, Car car, int maxDistance){
+        if (car.getDistance() == maxDistance) {
+            winners.add(car.getName());
+        }
+    }
 }

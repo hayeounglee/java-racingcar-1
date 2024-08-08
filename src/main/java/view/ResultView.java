@@ -11,7 +11,7 @@ public class ResultView {
             printDistance(racingCars.get(i));
         }
 
-        List<String> winners = getWinners(racingCars);
+        List<String> winners = domain.RacingGame.getWinners(racingCars);
         System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
     }
 
@@ -24,29 +24,5 @@ public class ResultView {
             distance--;
         }
         System.out.println();
-    }
-
-    private static List<String> getWinners(List<Car> racingCars) {
-        List<String> winners = new ArrayList<>();
-
-        int maxDistance = findMaxDistance(racingCars);
-        for (Car car : racingCars) {
-            addWinner(winners, car, maxDistance);
-        }
-        return winners;
-    }
-
-    private static int findMaxDistance(List<Car> racingCars){
-        int maxDistance = -1;
-        for (Car car : racingCars) {
-            maxDistance = Math.max(maxDistance, car.getDistance());
-        }
-        return maxDistance;
-    }
-
-    private static void addWinner(List<String> winners, Car car, int maxDistance){
-        if (car.getDistance() == maxDistance) {
-            winners.add(car.getName());
-        }
     }
 }
