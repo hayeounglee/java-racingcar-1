@@ -16,13 +16,10 @@ public class ResultView {
     }
 
     private static void printDistance(Car car) {
-        System.out.print(car.getName() + ':');
         int distance = car.getDistance();
 
-        while (distance > 0) {
-            System.out.print('-');
-            distance--;
-        }
-        System.out.println();
+        System.out.print(car.getName() + ':');
+        String distanceResult = "-".repeat(distance);
+        System.out.println(distanceResult);
     }
 }
