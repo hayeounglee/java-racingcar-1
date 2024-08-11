@@ -21,8 +21,8 @@ public class InputView {
 
     private static boolean isValidName(List<String> carNames){
         for(String name : carNames){
-            if(name.length() > MAX_CAR_NAME_LENGTH || name.length() == 0) {
-                System.out.println("이름은 " + MAX_CAR_NAME_LENGTH + "자를 초과하거나 공백일 수 없습니다.");
+            if(name.length() > MAX_CAR_NAME_LENGTH || name.trim().isEmpty() || name.length() == 0) {
+                System.out.println("이름은 " + MAX_CAR_NAME_LENGTH + "자를 초과하거나 공백이거나 null 일 수 없습니다.");
                 return false;
             }
         }

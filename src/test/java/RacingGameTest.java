@@ -4,6 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -62,8 +66,53 @@ public class RacingGameTest {
     }
 
     @Test
-    @DisplayName("자동차 이름이 5자 이하만 가능하다")
-    void testCarName(){
+    @DisplayName("자동차 이름이 whiteSpace 일 때 재입력을 요구한다")
+    void testShortName(){
+        String input = "car1, ,car2\ncar1,car3,car4\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
 
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        view.InputView.getCarNames();
+
+        String output = outContent.toString();
+        assertTrue(output.contains("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."));
+        assertTrue(output.contains("이름은 5자를 초과하거나 공백이거나 null 일 수 없습니다."));
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 null 일 때 재입력을 요구한다")
+    void testNullName(){
+        String input = "car1,,car2\ncar1,car3,car4\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        view.InputView.getCarNames();
+
+        String output = outContent.toString();
+        assertTrue(output.contains("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."));
+        assertTrue(output.contains("이름은 5자를 초과하거나 공백이거나 null 일 수 없습니다."));
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 6자일 때 재입력을 요구한다")
+    void testLongName(){
+        String input = "car1, hippo22\ncar1,car3,car4\n";
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        view.InputView.getCarNames();
+
+        String output = outContent.toString();
+        assertTrue(output.contains("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."));
+        assertTrue(output.contains("이름은 5자를 초과하거나 공백이거나 null 일 수 없습니다."));
     }
 }
