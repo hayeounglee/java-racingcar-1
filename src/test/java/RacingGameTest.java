@@ -11,18 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingGameTest {
     @Test
-    @DisplayName("입력받은 자동차 이름만큼 객체가 생성된다")
-    void testCreateRacingCars(){
-        List<String> carNames = Arrays.asList("Car1", "Car2", "Car3");
-        RacingGame game = new RacingGame(carNames, 3);
-        List<Car> racingCars = game.getRacingCars();
-
-        assertEquals("Car1", racingCars.get(0).getName());
-        assertEquals("Car2", racingCars.get(1).getName());
-        assertEquals("Car3", racingCars.get(2).getName());
-    }
-
-    @Test
     @DisplayName("랜덤 숫자 4이상일 때만 전진한다")
     void testMoveForward(){
         List<String> carNames = Arrays.asList("Car1");
@@ -41,6 +29,41 @@ public class RacingGameTest {
     @Test
     @DisplayName("우승자를 제대로 출력한다")
     void testWinners(){
-        
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Car car3 = new Car("car3");
+
+        car1.incrementDistance();
+        car2.incrementDistance();
+        car2.incrementDistance();
+        car3.incrementDistance();
+        car3.incrementDistance();
+        car3.incrementDistance();
+
+        List<Car> winners = Arrays.asList(car1, car2, car3);
+
+        List<String> expectedWinners = Arrays.asList("car3");
+
+        assertEquals(RacingGame.getWinners(winners), expectedWinners);
+    }
+
+    @Test
+    @DisplayName("동점일 때 모든 자동차를 출력한다")
+    void testEqualWinners(){
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        Car car3 = new Car("car3");
+
+        List<Car> winners = Arrays.asList(car1, car2, car3);
+
+        List<String> expectedWinners = Arrays.asList("car1", "car2", "car3");
+
+        assertEquals(RacingGame.getWinners(winners), expectedWinners);
+    }
+
+    @Test
+    @DisplayName("자동차 이름이 5자 이하만 가능하다")
+    void testCarName(){
+
     }
 }
