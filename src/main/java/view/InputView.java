@@ -16,8 +16,9 @@ public class InputView {
     public List<String> getCarNames(){
         while (true) {
             System.out.println(CAR_NAME_PROMPT);
+
             String input = scanner.nextLine();
-            List<String> carNames = new ArrayList<>(Arrays.asList(input.split(",")));
+            List<String> carNames = Arrays.asList(input.split(","));
 
             if (isValidName(carNames)) return carNames;
         }
