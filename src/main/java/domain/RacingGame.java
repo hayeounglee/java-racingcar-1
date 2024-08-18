@@ -41,8 +41,8 @@ public class RacingGame {
         return randomInt >= MOVE_THRESHOLD;
     }
 
-   public List<Car> getRacingCars(){
-        return racingCars;
+    public List<Car> getRacingCars(){
+        return List.copyOf(racingCars);
    }
 
     public static List<String> getWinners(List<Car> racingCars) {
