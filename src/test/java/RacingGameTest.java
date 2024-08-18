@@ -2,6 +2,7 @@ import domain.Car;
 import domain.RacingGame;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import view.InputView;
 
 
 import java.io.ByteArrayInputStream;
@@ -68,6 +69,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("자동차 이름이 whiteSpace 일 때 재입력을 요구한다")
     void testShortName(){
+        InputView inputview = new InputView();
         String input = "car1, ,car2\ncar1,car3,car4\n";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -75,7 +77,7 @@ public class RacingGameTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        view.InputView.getCarNames();
+        inputview.getCarNames();
 
         String output = outContent.toString();
         assertTrue(output.contains("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."));
@@ -85,6 +87,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("자동차 이름이 null 일 때 재입력을 요구한다")
     void testNullName(){
+        InputView inputview = new InputView();
         String input = "car1,,car2\ncar1,car3,car4\n";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -92,7 +95,7 @@ public class RacingGameTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        view.InputView.getCarNames();
+        inputview.getCarNames();
 
         String output = outContent.toString();
         assertTrue(output.contains("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."));
@@ -102,6 +105,7 @@ public class RacingGameTest {
     @Test
     @DisplayName("자동차 이름이 6자일 때 재입력을 요구한다")
     void testLongName(){
+        InputView inputview = new InputView();
         String input = "car1, hippo22\ncar1,car3,car4\n";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -109,7 +113,7 @@ public class RacingGameTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        view.InputView.getCarNames();
+        inputview.getCarNames();
 
         String output = outContent.toString();
         assertTrue(output.contains("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."));
@@ -119,6 +123,8 @@ public class RacingGameTest {
     @Test
     @DisplayName("시도 회수가 0이하일 때 재입력을 요구한다.")
     void testTryCount(){
+        InputView inputview = new InputView();
+
         String input = "0\n1\n";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
@@ -126,7 +132,7 @@ public class RacingGameTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        view.InputView.getTryCount();
+        inputview.getTryCount();
 
         String output = outContent.toString();
         assertTrue(output.contains("0이하는 입력할 수 없습니다."));

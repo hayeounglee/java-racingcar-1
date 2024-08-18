@@ -4,12 +4,14 @@ import domain.RacingGame;
 
 public class RacingMain {
     public static void main(String[] args) {
-        final var carNames = InputView.getCarNames();
-        final var tryCount = InputView.getTryCount();
+        InputView inputview = new InputView();
+        ResultView resultView = new ResultView();
+        final var carNames = inputview.getCarNames();
+        final var tryCount = inputview.getTryCount();
         final var racingGame = new RacingGame(carNames, tryCount);
 
         racingGame.playGame();
 
-        ResultView.printResult(racingGame.getRacingCars());
+        resultView.printResult(racingGame.getRacingCars());
     }
 }
