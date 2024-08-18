@@ -3,6 +3,7 @@ package domain;
 public class Car {
     private String name;
     private int distance;
+    private static final int MOVE_THRESHOLD = 4;
 
     public Car(String name){
         this.name = name;
@@ -15,6 +16,10 @@ public class Car {
 
     public int getDistance(){
         return distance;
+    }
+
+    public static boolean isMovable(int randomInt) {
+        return randomInt >= MOVE_THRESHOLD;
     }
 
     public void incrementDistance(){

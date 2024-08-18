@@ -20,7 +20,7 @@ public class RacingGameTest {
     void testMoveForward(){
         List<String> carNames = Arrays.asList("Car1");
         RacingGame game = new RacingGame(carNames, 3);
-        assertTrue(game.isMovable(4));
+        assertTrue(Car.isMovable(4));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class RacingGameTest {
     void testStopMove(){
         List<String> carNames = Arrays.asList("Car2");
         RacingGame game = new RacingGame(carNames, 3);
-        assertFalse(game.isMovable(3));
+        assertFalse(Car.isMovable(3));
     }
 
     @Test

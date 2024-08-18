@@ -6,10 +6,9 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private static final int RANDOM_BOUND = 10;
-    private static final int MOVE_THRESHOLD = 4;
-    private static final Random random = new Random();
-    private List<Car> racingCars;
+    private final int RANDOM_BOUND = 10;
+    private final Random random = new Random();
+    private final List<Car> racingCars;
     private int tryCount;
 
     public RacingGame(List<String> carNames, int tryCount) {
@@ -32,14 +31,10 @@ public class RacingGame {
     private void playOneRound(List<Car> racingCars) {
         for (int i = 0; i < racingCars.size(); i++) {
             int randomInt = random.nextInt(RANDOM_BOUND);
-            if ((isMovable(randomInt))) {
+            if ((Car.isMovable(randomInt))) {
                 racingCars.get(i).incrementDistance();
             }
         }
-    }
-
-    public static boolean isMovable(int randomInt) {
-        return randomInt >= MOVE_THRESHOLD;
     }
 
     public List<Car> getRacingCars() {
