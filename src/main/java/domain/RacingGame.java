@@ -3,6 +3,7 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private static final int RANDOM_BOUND = 10;
@@ -17,11 +18,9 @@ public class RacingGame {
     }
 
     private List<Car> createRacingCars(List<String> carNames){
-        List<Car> racingCars = new ArrayList<>();
-        for (int i = 0; i < carNames.size(); i++) {
-            racingCars.add(new Car(carNames.get(i)));
-        }
-        return racingCars;
+        return carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     public void playGame() {
