@@ -80,8 +80,8 @@ public class RacingGameTest {
         inputview.getCarNames();
 
         String output = outContent.toString();
-        assertTrue(output.contains("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."));
-        assertTrue(output.contains("이름은 5자를 초과하거나 공백이거나 null 일 수 없습니다."));
+        assertTrue(output.contains(inputview.CAR_NAME_PROMPT));
+        assertTrue(output.contains(inputview.NAME_VALIDATION_ERROR));
     }
 
     @Test
@@ -98,15 +98,15 @@ public class RacingGameTest {
         inputview.getCarNames();
 
         String output = outContent.toString();
-        assertTrue(output.contains("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."));
-        assertTrue(output.contains("이름은 5자를 초과하거나 공백이거나 null 일 수 없습니다."));
+        assertTrue(output.contains(inputview.CAR_NAME_PROMPT));
+        assertTrue(output.contains(inputview.NAME_VALIDATION_ERROR));
     }
 
     @Test
     @DisplayName("자동차 이름이 6자일 때 재입력을 요구한다")
     void testLongName(){
         InputView inputview = new InputView();
-        String input = "car1, hippo22\ncar1,car3,car4\n";
+        String input = "car1,hippo22\ncar1,car3,car4\n";
         ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
@@ -116,8 +116,8 @@ public class RacingGameTest {
         inputview.getCarNames();
 
         String output = outContent.toString();
-        assertTrue(output.contains("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."));
-        assertTrue(output.contains("이름은 5자를 초과하거나 공백이거나 null 일 수 없습니다."));
+        assertTrue(output.contains(inputview.CAR_NAME_PROMPT));
+        assertTrue(output.contains(inputview.NAME_VALIDATION_ERROR));
     }
 
     @Test
@@ -135,7 +135,7 @@ public class RacingGameTest {
         inputview.getTryCount();
 
         String output = outContent.toString();
-        assertTrue(output.contains("0이하는 입력할 수 없습니다."));
+        assertTrue(output.contains(inputview.TRY_COUNT_ERROR));
     }
 
 
