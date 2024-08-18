@@ -12,12 +12,12 @@ public class RacingGame {
     private List<Car> racingCars;
     private int tryCount;
 
-    public RacingGame(List<String> carNames, int tryCount){
+    public RacingGame(List<String> carNames, int tryCount) {
         this.racingCars = createRacingCars(carNames);
         this.tryCount = tryCount;
     }
 
-    private List<Car> createRacingCars(List<String> carNames){
+    private List<Car> createRacingCars(List<String> carNames) {
         return carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
@@ -29,10 +29,12 @@ public class RacingGame {
         }
     }
 
-    private void playOneRound(List<Car> racingCars){
+    private void playOneRound(List<Car> racingCars) {
         for (int i = 0; i < racingCars.size(); i++) {
             int randomInt = random.nextInt(RANDOM_BOUND);
-            if ((isMovable(randomInt))) racingCars.get(i).incrementDistance();
+            if ((isMovable(randomInt))) {
+                racingCars.get(i).incrementDistance();
+            }
         }
     }
 
@@ -40,31 +42,22 @@ public class RacingGame {
         return randomInt >= MOVE_THRESHOLD;
     }
 
-    public List<Car> getRacingCars(){
+    public List<Car> getRacingCars() {
         return List.copyOf(racingCars);
-   }
+    }
 
     public static List<String> getWinners(List<Car> racingCars) {
-        List<String> winners = new ArrayList<>();
-
         int maxDistance = findMaxDistance(racingCars);
-        for (Car car : racingCars) {
-            addWinner(winners, car, maxDistance);
-        }
-        return winners;
+        return racingCars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
-    private static int findMaxDistance(List<Car> racingCars){
-        int maxDistance = -1;
-        for (Car car : racingCars) {
-            maxDistance = Math.max(maxDistance, car.getDistance());
-        }
-        return maxDistance;
-    }
-
-    private static void addWinner(List<String> winners, Car car, int maxDistance){
-        if (car.getDistance() == maxDistance) {
-            winners.add(car.getName());
-        }
+    private static int findMaxDistance(List<Car> racingCars) {
+        return racingCars.stream()
+                .mapToInt(Car::getDistance)
+                .max()
+                .orElse(0);
     }
 }
