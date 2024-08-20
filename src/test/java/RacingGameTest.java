@@ -15,6 +15,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingGameTest {
-
+    @DisplayName("자동차 이름이 6자 이상일 때 예외가 발생한다")
+    @Test
 
 }
