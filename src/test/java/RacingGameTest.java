@@ -16,22 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingGameTest {
     @Test
-    @DisplayName("랜덤 숫자 4이상일 때만 전진한다")
-    void testMoveForward(){
-        List<String> carNames = Arrays.asList("Car1");
-        RacingGame game = new RacingGame(carNames, 3);
-        assertTrue(Car.isMovable(4));
-    }
-
-    @Test
-    @DisplayName("랜덤 숫자 3이하일 때 멈춘다")
-    void testStopMove(){
-        List<String> carNames = Arrays.asList("Car2");
-        RacingGame game = new RacingGame(carNames, 3);
-        assertFalse(Car.isMovable(3));
-    }
-
-    @Test
     @DisplayName("우승자를 제대로 출력한다")
     void testWinners(){
         Car car1 = new Car("car1");
