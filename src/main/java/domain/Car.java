@@ -9,17 +9,17 @@ public class Car {
     private int distance;
     private static final int MOVE_THRESHOLD = 4;
 
-    public Car(String name){
+    public Car(String name) {
         validateName(name);
         this.name = name;
         this.distance = 0;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public int getDistance(){
+    public int getDistance() {
         return distance;
     }
 
@@ -27,15 +27,15 @@ public class Car {
         return randomInt >= MOVE_THRESHOLD;
     }
 
-    public void incrementDistance(){
+    public void incrementDistance() {
         this.distance = this.distance + 1;
     }
 
-    private void validateName(String name){
-        if(name.length() > NAME_LENGTH_MAXIMUM){
+    private void validateName(String name) {
+        if (name.length() > NAME_LENGTH_MAXIMUM) {
             throw new IllegalArgumentException(NAME_VALIDATION_ERROR_1);
         }
-        if(name==null || name.isBlank()){
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException(NAME_VALIDATION_ERROR_2);
         }
     }
