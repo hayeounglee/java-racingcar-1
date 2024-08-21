@@ -31,11 +31,11 @@ public class Car {
     }
 
     private void validateName(String name) {
-        if (name.length() > NAME_LENGTH_MAXIMUM) {
-            throw new IllegalArgumentException(NAME_VALIDATION_ERROR_1);
-        }
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException(NAME_VALIDATION_ERROR_2);
+        }
+        if (name.length() > NAME_LENGTH_MAXIMUM) {
+            throw new IllegalArgumentException(NAME_VALIDATION_ERROR_1);
         }
     }
 }
