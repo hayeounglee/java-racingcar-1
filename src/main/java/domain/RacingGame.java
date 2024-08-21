@@ -1,5 +1,8 @@
 package domain;
 
+import strategy.NumberGenerator;
+import strategy.RandomNumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,11 +10,12 @@ import java.util.stream.Collectors;
 
 public class RacingGame {
     private final int RANDOM_BOUND = 10;
-    private final Random random = new Random();
+    private final NumberGenerator numberGenerator;
     private final List<Car> racingCars;
     private int tryCount;
 
-    public RacingGame(List<String> carNames, int tryCount) {
+    public RacingGame(NumberGenerator numberGenerator, List<String> carNames, int tryCount) {
+        this.numberGenerator = numberGenerator;
         this.racingCars = createRacingCars(carNames);
         this.tryCount = tryCount;
     }
@@ -30,8 +34,8 @@ public class RacingGame {
 
     private void playOneRound(List<Car> racingCars) {
         for (int i = 0; i < racingCars.size(); i++) {
-            int randomInt = random.nextInt(RANDOM_BOUND);
-            if ((Car.isMovable(randomInt))) {
+            int number = numberGenerator.generator();
+            if ((Car.isMovable(number))) {
                 racingCars.get(i).incrementDistance();
             }
         }
