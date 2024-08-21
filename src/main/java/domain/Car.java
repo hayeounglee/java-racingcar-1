@@ -3,11 +3,10 @@ package domain;
 public class Car {
     private static final int NAME_LENGTH_MAXIMUM = 5;
     private static final String NAME_VALIDATION_ERROR_1 = "이름은 " + NAME_LENGTH_MAXIMUM + "자를 초과할 수 없습니다.";
-
     private static final String NAME_VALIDATION_ERROR_2 = "이름은 null 이거나 공백일 수 없습니다.";
+    private static final int MOVE_THRESHOLD = 4;
     private String name;
     private int distance;
-    private static final int MOVE_THRESHOLD = 4;
 
     public Car(String name) {
         validateName(name);
