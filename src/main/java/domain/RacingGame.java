@@ -28,11 +28,11 @@ public class RacingGame {
 
     public void playGame() {
         while (tryCount-- > 0) {
-            playOneRound(racingCars);
+            playOneRound();
         }
     }
 
-    private void playOneRound(List<Car> racingCars) {
+    private void playOneRound() {
         for (int i = 0; i < racingCars.size(); i++) {
             int number = numberGenerator.generator();
             if ((Car.isMovable(number))) {
@@ -45,8 +45,8 @@ public class RacingGame {
         return List.copyOf(racingCars);
     }
 
-    public static List<String> getWinners(List<Car> racingCars) {
-        int maxDistance = findMaxDistance(racingCars);
+    public List<String> getWinners() {
+        int maxDistance = findMaxDistance();
         List<String> winners = racingCars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getName)
@@ -55,7 +55,7 @@ public class RacingGame {
         return List.copyOf(winners);
     }
 
-    private static int findMaxDistance(List<Car> racingCars) {
+    private int findMaxDistance() {
         return racingCars.stream()
                 .mapToInt(Car::getDistance)
                 .max()
