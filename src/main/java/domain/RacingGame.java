@@ -34,7 +34,7 @@ public class RacingGame {
     private void playOneRound() {
         for (int i = 0; i < racingCars.size(); i++) {
             int number = numberGenerator.generate();
-            if ((Car.isMovable(number))) {
+            if (Car.isMovable(number)) {
                 racingCars.get(i).incrementDistance();
             }
         }
