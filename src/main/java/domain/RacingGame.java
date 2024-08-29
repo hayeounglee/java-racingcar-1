@@ -33,7 +33,6 @@ public class RacingGame {
                 .filter(car -> car.getDistance() == maxDistance)
                 .map(Car::getName)
                 .collect(Collectors.toList());
-
         return winners;
     }
 
@@ -50,12 +49,9 @@ public class RacingGame {
     }
 
     private void playOneRound() {
-        for (int i = 0; i < racingCars.size(); i++) {
-            int number = numberGenerator.generate();
-            if (Car.isMovable(number)) {
-                racingCars.get(i).incrementDistance();
-            }
-        }
+        racingCars.stream()
+                .filter(car -> Car.isMovable(numberGenerator.generate()))
+                .forEach(Car::incrementDistance);
     }
 
     private int findMaxDistance() {
