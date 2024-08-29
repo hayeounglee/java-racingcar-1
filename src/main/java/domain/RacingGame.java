@@ -1,22 +1,40 @@
 package domain;
 
 import strategy.NumberGenerator;
-import strategy.RandomNumberGenerator;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingGame {
+    public static final String TRY_COUNT_ERROR = "0이하는 입력할 수 없습니다.";
     private final NumberGenerator numberGenerator;
     private final List<Car> racingCars;
     private int tryCount;
 
     public RacingGame(NumberGenerator numberGenerator, List<String> carNames, int tryCount) {
+        validateTryCount(tryCount);
         this.numberGenerator = numberGenerator;
         this.racingCars = createRacingCars(carNames);
         this.tryCount = tryCount;
+    }
+
+    private void validateTryCount(int tryCount){
+        if (tryCount <= 0){
+            throw new IllegalArgumentException(TRY_COUNT_ERROR);
+        }
+    }
+
+    public List<Car> getRacingCars() {
+        return List.copyOf(racingCars);
+    }
+
+    public List<String> getWinners() {
+        int maxDistance = findMaxDistance();
+        List<String> winners = racingCars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+
+        return List.copyOf(winners);
     }
 
     private List<Car> createRacingCars(List<String> carNames) {
@@ -38,20 +56,6 @@ public class RacingGame {
                 racingCars.get(i).incrementDistance();
             }
         }
-    }
-
-    public List<Car> getRacingCars() {
-        return List.copyOf(racingCars);
-    }
-
-    public List<String> getWinners() {
-        int maxDistance = findMaxDistance();
-        List<String> winners = racingCars.stream()
-                .filter(car -> car.getDistance() == maxDistance)
-                .map(Car::getName)
-                .collect(Collectors.toList());
-
-        return List.copyOf(winners);
     }
 
     private int findMaxDistance() {
