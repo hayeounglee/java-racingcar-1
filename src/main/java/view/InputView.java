@@ -12,11 +12,9 @@ public class InputView {
     private Scanner scanner = new Scanner(System.in);
 
     public List<String> getCarNames(){
-        while (true) {
-            System.out.println(CAR_NAME_PROMPT);
-            String input = scanner.nextLine();
-           return Arrays.asList(input.split(","));
-        }
+        System.out.println(CAR_NAME_PROMPT);
+        String input = scanner.nextLine();
+        return Arrays.asList(input.split(","));
     }
 
     public int getTryCount(){
