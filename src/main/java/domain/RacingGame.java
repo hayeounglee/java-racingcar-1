@@ -9,7 +9,6 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private final int RANDOM_BOUND = 10;
     private final NumberGenerator numberGenerator;
     private final List<Car> racingCars;
     private int tryCount;
@@ -34,7 +33,7 @@ public class RacingGame {
 
     private void playOneRound() {
         for (int i = 0; i < racingCars.size(); i++) {
-            int number = numberGenerator.generator();
+            int number = numberGenerator.generate();
             if ((Car.isMovable(number))) {
                 racingCars.get(i).incrementDistance();
             }

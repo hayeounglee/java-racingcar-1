@@ -9,7 +9,7 @@ public class FixedNumberGenerator implements NumberGenerator{
         this.numbers = new ArrayList<>(numbers);
     }
     @Override
-    public int generator() {
+    public int generate() {
         return numbers.remove(0);
     }
 }

@@ -10,7 +10,7 @@ public class RandomNumberGenerator implements NumberGenerator{
         this.random = random;
     }
     @Override
-    public int generator(){
+    public int generate(){
         return random.nextInt(RANDOM_BOUND);
     }
 }
