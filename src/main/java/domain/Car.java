@@ -15,6 +15,15 @@ public class Car {
         this.distance = 0;
     }
 
+    private void validateName(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException(NAME_VALIDATION_ERROR_2);
+        }
+        if (name.length() > NAME_LENGTH_MAXIMUM) {
+            throw new IllegalArgumentException(NAME_VALIDATION_ERROR_1);
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -29,15 +38,6 @@ public class Car {
 
     public void incrementDistance() {
         this.distance = this.distance + 1;
-    }
-
-    private void validateName(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException(NAME_VALIDATION_ERROR_2);
-        }
-        if (name.length() > NAME_LENGTH_MAXIMUM) {
-            throw new IllegalArgumentException(NAME_VALIDATION_ERROR_1);
-        }
     }
 }
 
