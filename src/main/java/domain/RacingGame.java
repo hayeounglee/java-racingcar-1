@@ -34,7 +34,7 @@ public class RacingGame {
                 .map(Car::getName)
                 .collect(Collectors.toList());
 
-        return List.copyOf(winners);
+        return winners;
     }
 
     private List<Car> createRacingCars(List<String> carNames) {
