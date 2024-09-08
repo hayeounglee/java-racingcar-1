@@ -22,20 +22,20 @@ public class Car {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getDistance() {
-        return distance;
-    }
-
     public static boolean isMovable(int randomInt) {
         return randomInt >= MOVE_THRESHOLD;
     }
 
     public void incrementDistance() {
         this.distance = this.distance + 1;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDistance() {
+        return distance;
     }
 }
 
