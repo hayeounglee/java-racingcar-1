@@ -3,8 +3,8 @@ package strategy;
 import java.util.Random;
 
 public class RandomNumberGenerator implements NumberGenerator{
-    private final Random random;
     private static final int RANDOM_BOUND = 10;
+    private final Random random;
 
     public RandomNumberGenerator(Random random){
         this.random = random;
