@@ -8,6 +8,7 @@ public class RacingGame {
     public static final String TRY_COUNT_ERROR = "0이하는 입력할 수 없습니다.";
     private final NumberGenerator numberGenerator;
     private final List<Car> racingCars;
+
     private int tryCount;
 
     public RacingGame(NumberGenerator numberGenerator, List<String> carNames, int tryCount) {
