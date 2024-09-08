@@ -1,6 +1,7 @@
 package domain;
 
 import strategy.NumberGenerator;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,8 +19,8 @@ public class RacingGame {
         this.tryCount = tryCount;
     }
 
-    private void validateTryCount(int tryCount){
-        if (tryCount <= 0){
+    private void validateTryCount(int tryCount) {
+        if (tryCount <= 0) {
             throw new IllegalArgumentException(TRY_COUNT_ERROR);
         }
     }

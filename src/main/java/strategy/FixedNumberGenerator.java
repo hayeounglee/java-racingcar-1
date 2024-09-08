@@ -3,10 +3,10 @@ package strategy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FixedNumberGenerator implements NumberGenerator{
+public class FixedNumberGenerator implements NumberGenerator {
     private final List<Integer> numbers;
 
-    public FixedNumberGenerator(List<Integer> numbers){
+    public FixedNumberGenerator(List<Integer> numbers) {
         this.numbers = new ArrayList<>(numbers);
     }
 

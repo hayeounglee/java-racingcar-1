@@ -10,10 +10,10 @@ public class InputView {
     private static final String TRY_COUNT_PROMPT = "시도할 회수는 몇회인가요?";
     private final Scanner scanner = new Scanner(System.in);
 
-    private InputView(){
+    private InputView() {
     }
 
-    public static InputView getInstance(){
+    public static InputView getInstance() {
         return LazyHolder.inputView;
     }
 
@@ -21,14 +21,14 @@ public class InputView {
         private static final InputView inputView = new InputView();
     }
 
-    public List<String> getCarNames(){
+    public List<String> getCarNames() {
         System.out.println(CAR_NAME_PROMPT);
         String input = scanner.nextLine();
         return Arrays.asList(input.split(","));
     }
 
-    public int getTryCount(){
-        while(true) {
+    public int getTryCount() {
+        while (true) {
             System.out.println(TRY_COUNT_PROMPT);
             return scanner.nextInt();
         }

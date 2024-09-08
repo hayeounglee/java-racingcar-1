@@ -2,6 +2,7 @@ import strategy.RandomNumberGenerator;
 import view.InputView;
 import view.ResultView;
 import domain.RacingGame;
+
 import java.util.Random;
 
 public class RacingMain {
