@@ -52,11 +52,10 @@ public class RacingGame {
         return List.copyOf(racingCars);
     }
 
-    public List<String> getWinners() {
+    public List<Car> getWinners() {
         int maxDistance = findMaxDistance();
-        List<String> winners = racingCars.stream()
+        List<Car> winners = racingCars.stream()
                 .filter(car -> car.getDistance() == maxDistance)
-                .map(Car::getName)
                 .collect(Collectors.toList());
         return winners;
     }
