@@ -23,19 +23,6 @@ public class RacingGame {
         }
     }
 
-    public List<Car> getRacingCars() {
-        return List.copyOf(racingCars);
-    }
-
-    public List<String> getWinners() {
-        int maxDistance = findMaxDistance();
-        List<String> winners = racingCars.stream()
-                .filter(car -> car.getDistance() == maxDistance)
-                .map(Car::getName)
-                .collect(Collectors.toList());
-        return winners;
-    }
-
     private List<Car> createRacingCars(List<String> carNames) {
         return carNames.stream()
                 .map(Car::new)
@@ -59,5 +46,18 @@ public class RacingGame {
                 .mapToInt(Car::getDistance)
                 .max()
                 .orElse(0);
+    }
+
+    public List<Car> getRacingCars() {
+        return List.copyOf(racingCars);
+    }
+
+    public List<String> getWinners() {
+        int maxDistance = findMaxDistance();
+        List<String> winners = racingCars.stream()
+                .filter(car -> car.getDistance() == maxDistance)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        return winners;
     }
 }
