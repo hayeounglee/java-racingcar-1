@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class RacingMain {
     public static void main(String[] args) {
-        final InputView inputview = new InputView();
+        final InputView inputview = InputView.getInstance();
         final ResultView resultView = new ResultView();
 
         final var carNames = inputview.getCarNames();
