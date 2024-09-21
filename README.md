@@ -163,5 +163,6 @@ Randoms.pickNumberInRange(0,9);
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
 
 
-![image](https://github.com/user-attachments/assets/bd687b97-3142-4fce-9323-6e9b53226246)
+<img width="324" alt="image" src="https://github.com/user-attachments/assets/8dcef7cc-9c41-4f58-bb78-e3fab738982e">
+
 
